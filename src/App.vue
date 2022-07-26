@@ -1,26 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+ 
+  <CatFood/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CatFood from './components/CatFood.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    CatFood
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@font-face {
+  font-family: "Exo2.0";
+  src: local("Exo2.0"),
+   url(./assets/fonts/Exo2.0-Thin.otf) format("truetype");
 }
 </style>
