@@ -5,42 +5,82 @@
                 <div class="shadow"></div>
             </div>
             <div class="desk">
-                <!---->
+                <!-- Header-->
                 <div class="header">
                     <span class="text-header">Ты сегодня покормил кота?</span>
                 </div>
-                <!---->
-                <div class="background">
+                <!--Карточка №1-->
+                <div class="background1">
                     <div class="wrapper">
-                        <div class="item"
-                            v-bind:class="[{ active: isActive1 }, { active1: !isActive4 }, { active3: isActive7 }]">
+                        <div class="item" v-bind:class="[
+                        { selectCart: isSelect1 },
+                        { unfocus: isUnFocus1 },                        
+                        { frozen: isFrozen1 }]">
                         </div>
-                        <div class="photoCat" v-bind:class="{ disabled: isActive7 }">
-                            <div class="cat"></div>
+                        <div class="photoCat" v-bind:class="{ disabled: isFrozen1 }">
+                            <div class="cat1">
+                                <div class="cat"></div>
+                            </div>
                         </div>
-                        <div class="border"
-                            v-bind:class="[{ active: isActive1 }, { active1: !isActive4 }, { active3: isActive7 }]">
+                        <div class="border" v-bind:class="[
+                        { selectCart: isSelect1 },
+                        { unfocus: isUnFocus1 },                        
+                        { frozen: isFrozen1}]">
+                        </div>
+                        <div class="border1" v-bind:class="[
+                        { selectCart: isSelect1 },
+                        { unfocus: isUnFocus1 },                    
+                        { frozen: isFrozen1}]">
                         </div>
                     </div>
 
-
-                    <div class="oval"
-                        v-bind:class="[{ active: isActive1 }, { active1: !isActive4 }, { active3: isActive7 }]">
+                    <div class="oval" v-bind:class="[
+                    { selectCart: isSelect1 },
+                    { unfocus: isUnFocus1 },                   
+                    { frozen: isFrozen1}]">
                     </div>
-                    <!---->
-                    <span class="text001head" v-bind:class="{ disabled: isActive7 }">{{ texthead }}</span>
-                    <span class="text002title" v-bind:class="{ disabled: isActive7 }">{{ texttitle }}</span>
-                    <span class="text003taste" v-bind:class="{ disabled: isActive7 }">{{ texttaste1 }}</span>
-                    <span class="text004sale" v-bind:class="{ disabled: isActive7 }">{{ textsale1 }}</span>
-                    <span class="text005footer13" v-if="isActive7">{{ textfooter1End }}</span>
-                    <span class="text005footer" v-else-if="!isActive1">{{ textfooter }}<span class="textbuy1"
-                            v-on:click="isActive1 = !isActive1" style="color:#1698D9">купи.</span></span>
-                    <span class="text005footer12" v-else-if="isActive1">{{ textfooter1Select }}</span>
-                    <span class="text006weight" v-bind:class="{ disabled: isActive7 }">{{ textweight1 }}</span>
-                    <span class="text007weight" v-bind:class="{ disabled: isActive7 }"> <br /> <span
-                            style="font-size: 21px;">{{ textweight0 }}</span></span>
-                    <div v-if="isActive7"></div>
-                    <div v-else-if="!isActive1">
+                    <!--1-Текстовый Блок-->
+                    <span class="text001head" v-bind:class="{ disabled: isFrozen1 }">
+                        {{ texthead }}
+                    </span>
+                    <span class="text002title" v-bind:class="{ disabled: isFrozen1 }">
+                        {{ texttitle }}
+                    </span>
+                    <span class="text003taste" v-bind:class="{ disabled: isFrozen1 }">
+                        {{ texttaste1 }}
+                    </span>
+                    <span class="text004sale" v-bind:class="{ disabled: isFrozen1 }">
+                        {{ textsale1 }}
+                    </span>
+                    <span class="text006weight" v-bind:class="{ disabled: isFrozen1 }">
+                        {{ textweight1 }}
+                    </span>
+                    <span class="text007weight" v-bind:class="{ disabled: isFrozen1 }">
+                        <br />
+                        <span style="font-size: 21px;">
+                        {{ textweight0 }}
+                        </span>
+                    </span>
+
+                    <!-- Блок Footer: текст, линии -->
+                    <span class="text005footer" v-if="isFrozen1">{{ textfooter1End }}
+                    </span>
+                    <span class="text005footer" v-else-if="!isSelect1">
+                        {{ textfooter }}
+                        <span class="textbuy1" 
+                        v-on:click="isSelect1 = !isSelect1"
+                        v-bind:class="{ act: isUnFocus1 }">
+                            {{ textbuy }}
+                        </span>
+                    </span>
+                    <span class="text005footer" v-else-if="isSelect1">
+                        {{ textfooter1Select }}
+                    </span>
+
+                    <div v-if="isFrozen1"></div>
+                    <div class="line" 
+                    v-bind:class="{ unfocus: isUnFocus1 }"
+                     v-else-if="!isSelect1">
                         <div class="line1"></div>
                         <div class="line2"> </div>
                         <div class="line3"></div>
@@ -48,40 +88,96 @@
                         <div class="line5"></div>
                         <div class="line6"></div>
                     </div>
-                    <div class="push1" v-if="!isActive7" v-on:mouseout="isActive4 = !isActive4"
-                        v-on:mouseover="isActive4 = !isActive4" v-on:click="isActive1 = !isActive1"></div>
-                    <div class="disabled1" v-on:click="isActive7 = !isActive7"></div>
+                    <!--Блок отвечающий за 1) Выбор карточки 2) За состояние наведения-->
+                    <div class="push1" 
+                    v-if="!isFrozen1" 
+                    v-on:mouseout="enable1"
+                    v-on:mouseover="mute1()" 
+                    v-on:click="isSelect1 = !isSelect1">
+                    </div>
+                    <!--Отключение 1 карточки-->
+                    <div class="disabled1" v-on:click="isFrozen1 = !isFrozen1">
+                    </div>
                 </div>
-                <!---->
+                <!--Вторая карточка-->
                 <div class="background2">
                     <div class="wrapper">
                         <div class="item"
-                            v-bind:class="[{ active: isActive2 }, { active1: !isActive5 }, { active3: isActive8 }]">
+                            v-bind:class="[
+                                { selectCart: isSelect2 },
+                                { unfocus: isUnFocus2 },                                
+                                { frozen: isFrozen2 }]">
                         </div>
-                        <div class="photoCat" v-bind:class="{ disabled: isActive8 }">
-                            <div class="cat"></div>
+                        <div class="photoCat" v-bind:class="{ disabled: isFrozen2 }">
+                            <div class="cat1">
+                                <div class="cat"></div>
+                            </div>
                         </div>
                         <div class="border"
-                            v-bind:class="[{ active: isActive2 }, { active1: !isActive5 }, { active3: isActive8 }]">
+                            v-bind:class="[
+                                { selectCart: isSelect2 }, 
+                                { unfocus: isUnFocus2 },                                
+                                 { frozen: isFrozen2 }]">
+                        </div>
+                        <div class="border1"
+                            v-bind:class="[
+                                { selectCart: isSelect2 }, 
+                                { unfocus: isUnFocus2 },                              
+                                { frozen: isFrozen2 }]">
                         </div>
                     </div>
                     <div class="oval"
-                        v-bind:class="[{ active: isActive2 }, { active1: !isActive5 }, { active3: isActive8 }]">
+                        v-bind:class="[
+                            { selectCart: isSelect2 }, 
+                            { unfocus: isUnFocus2 },                             
+                            { frozen: isFrozen2 }]">
                     </div>
-                    <!---->
-                    <span class="text001head" v-bind:class="{ disabled: isActive8 }">{{ texthead }}</span>
-                    <span class="text002title" v-bind:class="{ disabled: isActive8 }">{{ texttitle }}</span>
-                    <span class="text003taste2" v-bind:class="{ disabled: isActive8 }">{{ texttaste2 }}</span>
-                    <span class="text004sale2" v-bind:class="{ disabled: isActive8 }">{{ textsale2 }}</span>
-                    <span class="text005footer23" v-if="isActive8">{{ textfooter2End }}</span>
-                    <span class="text005footer" v-else-if="!isActive2">{{ textfooter }}<span class="textbuy2"
-                            v-on:click="isActive2 = !isActive2" style="color:#1698D9">купи.</span></span>
-                    <span class="text005footer22" v-else-if="isActive2">{{ textfooter2Select }}</span>
-                    <span class="text006weight2" v-bind:class="{ disabled: isActive8 }">{{ textweight2 }}</span>
-                    <span class="text007weight" v-bind:class="{ disabled: isActive8 }"> <br /> <span
-                            style="font-size: 21px;">{{ textweight0 }}</span></span>
-                    <div v-if="isActive8"></div>
-                    <div v-else-if="!isActive2">
+                    <!--2-Текстовый Блок-->
+                    <span class="text001head" v-bind:class="{ disabled: isFrozen2 }">
+                        {{ texthead }}
+                        </span>
+                    <span class="text002title" v-bind:class="{ disabled: isFrozen2 }">
+                        {{ texttitle }}
+                        </span>
+                    <span class="text003taste" v-bind:class="{ disabled: isFrozen2 }">
+                        {{ texttaste2 }}
+                        </span>
+                    <span class="text004sale" v-bind:class="{ disabled: isFrozen2 }">
+                        {{ textsale2 }}
+                        </span>
+                    
+                    <span class="text006weight" v-bind:class="{ disabled: isFrozen2 }">
+                        {{ textweight2 }}
+                    </span>
+                    <span class="text007weight" v-bind:class="{ disabled: isFrozen2 }">
+                        <br /> 
+                        <span style="font-size: 21px;">
+                            {{ textweight0 }}
+                        </span>
+                    </span>
+                    <!-- Блок Footer: текст, линии -->
+                    <span class="text005footer" 
+                        v-if="isFrozen2">
+                        {{ textfooter2End }}
+                    </span>
+                    <span class="text005footer" 
+                        v-else-if="!isSelect2">
+                        {{ textfooter }}
+                        <span class="textbuy2"
+                            v-on:click="isSelect2 = !isSelect2"
+                            v-bind:class="{ act: isUnFocus2 }">
+                                {{ textbuy }}
+                        </span>
+                    </span>
+                    <span class="text005footer" 
+                        v-else-if="isSelect2">
+                        {{ textfooter2Select }}
+                    </span>
+
+                    <div v-if="isFrozen2"></div>
+                    <div class="line" 
+                    v-bind:class="{ unfocus: isUnFocus2 }" 
+                    v-else-if="!isSelect2">
                         <div class="line1"></div>
                         <div class="line2"> </div>
                         <div class="line3"></div>
@@ -89,51 +185,107 @@
                         <div class="line5"></div>
                         <div class="line6"></div>
                     </div>
-                    <div class="push2" v-if="!isActive8" v-on:mouseout="isActive5 = !isActive5"
-                        v-on:mouseover="isActive5 = !isActive5" v-on:click="isActive2 = !isActive2"></div>
-                    <div class="disabled2" v-on:click="isActive8 = !isActive8"></div>
+                    <!--Блок отвечающий за 1) Выбор карточки 2) За состояние наведения-->
+                    <div class="push2" 
+                    v-if="!isFrozen2" 
+                    v-on:mouseout="enable2"
+                    v-on:mouseover="mute2()" 
+                    v-on:click="isSelect2 = !isSelect2"></div>
+                    <!--Отключение 2 карточки-->
+                    <div class="disabled2"
+                    v-on:click="isFrozen2 = !isFrozen2">
+                    </div>
                 </div>
-                <!---->
+                <!--Карточка №3-->
                 <div class="background3">
                     <div class="wrapper">
                         <div class="item"
-                            v-bind:class="[{ active: isActive3 }, { active1: !isActive6 }, { active3: isActive9 }]">
+                            v-bind:class="[
+                                { selectCart: isSelect3 }, 
+                                { unfocus: isUnFocus3 },                              
+                                { frozen: isFrozen3 }]">
                         </div>
-                        <div class="photoCat" v-bind:class="{ disabled: isActive9 }">
-                            <div class="cat"></div>
+                        <div class="photoCat" v-bind:class="{ disabled: isFrozen3 }">
+                            <div class="cat1">
+                                <div class="cat"></div>
+                            </div>
                         </div>
                         <div class="border"
-                            v-bind:class="[{ active: isActive3 }, { active1: !isActive6 }, { active3: isActive9 }]">
+                            v-bind:class="[
+                                { selectCart: isSelect3 }, 
+                                { unfocus: isUnFocus3 },                                
+                                { frozen: isFrozen3 }]">
+                        </div>
+                        <div class="border1"
+                            v-bind:class="[
+                                { selectCart: isSelect3 }, 
+                                { unfocus: isUnFocus3 },                                 
+                                { frozen: isFrozen3 }]">
                         </div>
                     </div>
                     <div class="oval"
-                        v-bind:class="[{ active: isActive3 }, { active1: !isActive6 }, { active3: isActive9 }]">
+                        v-bind:class="[
+                            { selectCart: isSelect3 }, 
+                            { unfocus: isUnFocus3 },                             
+                            { frozen: isFrozen3 }]">
                     </div>
-                    <!---->
-                    <span class="text001head" v-bind:class="{ disabled: isActive9 }">{{ texthead }}</span>
-                    <span class="text002title" v-bind:class="{ disabled: isActive9 }">{{ texttitle }}</span>
-                    <span class="text003taste3" v-bind:class="{ disabled: isActive9 }">{{ texttaste3 }}</span>
-                    <span class="text004sale3" v-bind:class="{ disabled: isActive9 }">{{ textsale3 }}</span>
-                    <span class="text005footer33" v-if="isActive9">{{ textfooter3End }}</span>
-                    <span class="text005footer" v-else-if="!isActive3">{{ textfooter }}<span class="textbuy2"
-                            v-on:click="isActive3 = !isActive3" style="color:#1698D9">купи.</span></span>
-                    <span class="text005footer32" v-else-if="isActive3">{{ textfooter3Select }}</span>
-                    <span class="text006weight3" v-bind:class="{ disabled: isActive9 }">{{ textweight3 }}</span>
-                    <span class="text007weight" v-bind:class="{ disabled: isActive9 }"> <br /> <span
-                            style="font-size: 21px;">{{ textweight0 }}</span></span>
-                    <div v-if="isActive9"></div>
-                    <div v-else-if="!isActive3">
+                    <!--3-Текстовый блок-->
+                    <span class="text001head" v-bind:class="{ disabled: isFrozen3 }">
+                        {{ texthead }}
+                    </span>
+                    <span class="text002title" v-bind:class="{ disabled: isFrozen3 }">
+                        {{ texttitle }}
+                    </span>
+                    <span class="text003taste" v-bind:class="{ disabled: isFrozen3 }">
+                        {{ texttaste3 }}
+                    </span>
+                    <span class="text004sale" v-bind:class="{ disabled: isFrozen3 }">
+                        {{ textsale3 }}
+                    </span>
+                    
+                    <span class="text006weight" v-bind:class="{ disabled: isFrozen3 }">
+                        {{ textweight3 }}
+                    </span>
+                    <span class="text007weight" v-bind:class="{ disabled: isFrozen3 }"
+                        > <br /> 
+                        <span style="font-size: 21px;">
+                            {{ textweight0 }}
+                        </span>
+                    </span>
+                    <!-- Блок Footer: текст, линии -->   
+                    <span class="text005footer" v-if="isFrozen3">
+                        {{ textfooter3End }}
+                    </span>
+                    <span class="text005footer" v-else-if="!isSelect3">
+                        {{ textfooter }}
+                        <span class="textbuy2"
+                            v-on:click="isSelect3 = !isSelect3"
+                            v-bind:class="{ act: isUnFocus3 }">
+                                {{ textbuy }}
+                            </span>
+                    </span>
+                    <span class="text005footer" v-else-if="isSelect3">
+                        {{ textfooter3Select }}
+                    </span>        
+                    <div v-if="isFrozen3"></div>
+                    <div class="line" 
+                    v-bind:class="{ unfocus: isUnFocus3 }" 
+                    v-else-if="!isSelect3">
                         <div class="line1"></div>
                         <div class="line2"> </div>
                         <div class="line3"></div>
                         <div class="line4"></div>
                         <div class="line5"></div>
                         <div class="line6"></div>
-                    </div>
-                    <div class="push3" v-if="!isActive9" v-on:mouseout="isActive6 = !isActive6"
-                        v-on:mouseover="isActive6 = !isActive6" v-on:click="isActive3 = !isActive3"></div>
-                    <div class="disabled3" v-on:click="isActive9 = !isActive9"></div>
-
+                    </div> 
+                    <!--Блок отвечающий за 1) Выбор карточки 2) За состояние наведения-->
+                    <div class="push3"
+                    v-if="!isFrozen3" 
+                    v-on:mouseout="enable3"
+                    v-on:mouseover="mute3()"
+                     v-on:click="isSelect3 = !isSelect3"></div>
+                     <!--Отключение 3 карточки-->
+                    <div class="disabled3" v-on:click="isFrozen3 = !isFrozen3"></div>
                 </div>
                 <!---->
             </div>
@@ -142,6 +294,8 @@
 </template>
 
 <script>
+
+
 export default {
     name: 'CatFood',
     props: {},
@@ -159,6 +313,7 @@ export default {
             textweight2: '2',
             textweight3: '5',
             textweight0: 'кг',
+            textbuy: 'купи.',
             textfooter: 'Чего сидишь? Порадуй котэ, ',
             textfooter1Select: 'Печень утки разварная с артишоками.',
             textfooter1End: 'Печалька, с фуа-гра закончился.',
@@ -166,29 +321,52 @@ export default {
             textfooter2End: 'Печалька, с рыбой закончился.',
             textfooter3Select: 'Филе из цыплят с трюфелями в бульоне.',
             textfooter3End: 'Печалька, с курой закончился.',
-            isActive1: false,
-            isActive2: false,
-            isActive3: false,
-            isActive4: false,
-            isActive5: false,
-            isActive6: false,
-            isActive7: false,
-            isActive8: false,
-            isActive9: false,
+            isSelect1: false,
+            isSelect2: false,
+            isSelect3: false,
+            isUnFocus1: false,
+            isUnFocus2: false,
+            isUnFocus3: false,
+            isFrozen1: false,
+            isFrozen2: false,
+            isFrozen3: false,
+           
+
         }
     },
-
+    methods: {    
+       
+        enable1() {
+            this.isUnFocus1 = true
+        },
+        mute1() {
+            this.isUnFocus1 = false
+        },
+        
+        enable2() {
+            this.isUnFocus2 = true
+        },
+        mute2() {
+            this.isUnFocus2 = false
+        },        
+        enable3() {
+            this.isUnFocus3 = true
+        },
+        mute3() {
+            this.isUnFocus3 = false
+        },
+    }
 }
 </script>
 
-<style scoped>
+<style>
+
 .cat-shop {
     box-sizing: border-box;
     border-color: transparent;
     margin: 0px;
-    background-color: rgba(255, 255, 255, 1);
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    min-width: 100vw;
     position: relative;
     top: 0;
     left: 0;
@@ -200,8 +378,8 @@ export default {
 }
 
 .pattern {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     left: 0px;
     top: 0px;
     object-fit: cover;
@@ -212,8 +390,8 @@ export default {
 }
 
 .shadow {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     object-fit: cover;
     flex-grow: 0;
     flex-shrink: 0;
@@ -237,15 +415,15 @@ export default {
 }
 
 .desk {
-    min-width: 1280px;
+    min-width: 1300px;
     min-height: 680px;
-    margin: auto;
+    margin: 0 auto;
     box-sizing: border-box;
     position: absolute;
 }
 
 /*Базовые карточки*/
-.background {
+.background1 {
     width: 320px;
     height: 509px;
     position: absolute;
@@ -262,25 +440,10 @@ export default {
     bottom: 5.7%;
     height: 480px;
     width: 320px;
-    z-index: 3;
+    z-index: 1;
     border-radius: 60px 12px 12px 12px;
     cursor: pointer;
-}
-
-.push1.disabled1 {
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: 5.7%;
-    height: 480px;
-    width: 320px;
-    z-index: 3;
-    border-radius: 60px 12px 12px 12px;
-    cursor: pointer;
-    border-color: transparent;
-    mix-blend-mode: normal;
-    opacity: 0.5;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .background2 {
@@ -300,9 +463,10 @@ export default {
     bottom: 5.7%;
     height: 480px;
     width: 320px;
-    z-index: 3;
+    z-index: 1;
     border-radius: 60px 12px 12px 12px;
     cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .background3 {
@@ -315,40 +479,24 @@ export default {
 }
 
 .push3 {
-    position: absolute;
+ position: absolute;
     left: 0%;
     right: 0%;
-    top: 104px;
-    bottom: 0%;
+    top: 0%;
+    bottom: 5.7%;
     height: 480px;
     width: 320px;
-    z-index: 3;
+    z-index: 1;
     border-radius: 60px 12px 12px 12px;
     cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 @media (max-width: 1200px) {
-    .cat-shop {
-        margin: 0;
-        box-sizing: border-box;
-        border-color: transparent;
-        margin: 0px auto;
-       
-        height: 100vh;
-        width: 100vw;
-        position: relative;
-        top: 0;
-        left: 0;
-        display: flex;
-        align-items: start;
-        align-content: center;
-        justify-content: center;
-        overflow: auto;
-    }
 
     .pattern {
-        height: 100%;
-        width: 100%;
+        height: 100vh;
+        width: 100vw;
         left: 0px;
         top: 0px;
         overflow: auto;
@@ -364,8 +512,8 @@ export default {
     }
 
     .shadow {
-        width: 100%;
-        height: 100%;
+        height: 100vh;
+        width: 100vw;
         overflow: auto;
         min-height: 1229px;
         min-width: 768px;
@@ -390,48 +538,20 @@ export default {
 
     .desk {
         min-width: 768px;
+        min-height: 1229px;
         margin: auto;
         box-sizing: border-box;
         position: absolute;
     }
-
+    
     /*Базовые карточки*/
-    .background {
+    .background1 {
         width: 320px;
         height: 509px;
         position: absolute;
         box-sizing: border-box;
         left: 24px;
         top: 104px;
-    }
-
-    .push1 {
-        position: absolute;
-        left: 0%;
-        right: 0%;
-        top: 0%;
-        bottom: 5.7%;
-        height: 480px;
-        width: 320px;
-        z-index: 3;
-        border-radius: 60px 12px 12px 12px;
-        cursor: pointer;
-    }
-
-    .push1.disabled1 {
-        position: absolute;
-        left: 0%;
-        right: 0%;
-        top: 0%;
-        bottom: 5.7%;
-        height: 480px;
-        width: 320px;
-        z-index: 3;
-        border-radius: 60px 12px 12px 12px;
-        cursor: pointer;
-        border-color: transparent;
-        mix-blend-mode: normal;
-        opacity: 0.5;
     }
 
     .background2 {
@@ -443,19 +563,6 @@ export default {
         top: 104px;
     }
 
-    .push2 {
-        position: absolute;
-        left: 0%;
-        right: 0%;
-        top: 0%;
-        bottom: 5.7%;
-        height: 480px;
-        width: 320px;
-        z-index: 3;
-        border-radius: 60px 12px 12px 12px;
-        cursor: pointer;
-    }
-
     .background3 {
         width: 320px;
         height: 509px;
@@ -464,41 +571,8 @@ export default {
         left: 224px;
         top: 673px;
     }
-
-    .push3 {
-        position: absolute;
-        left: 0%;
-        right: 0%;
-        top: 0%;
-        bottom: 5.7%;
-        height: 480px;
-        width: 320px;
-        z-index: 3;
-        border-radius: 60px 12px 12px 12px;
-        cursor: pointer;
-    }
-
 }
-
-
 @media (max-width: 768px) {
-    .cat-shop {
-        margin: 0;
-        box-sizing: border-box;
-        border-color: transparent;
-        margin: 0px auto;
-        background-color: rgba(255, 255, 255, 1);
-        height: 100vh;
-        width: 100vw;
-        position: relative;
-        top: 0;
-        left: 0;
-        display: flex;
-        align-items: start;
-        align-content: center;
-        justify-content: center;
-        overflow: auto;
-    }
 
     .pattern {
         height: 100%;
@@ -543,49 +617,21 @@ export default {
     }
 
     .desk {
-        min-width:370px;
+        min-width: 370px;
+        min-height: 1838px;
         margin: auto;
         box-sizing: border-box;
         position: absolute;
     }
 
     /*Базовые карточки*/
-    .background {
+    .background1 {
         width: 320px;
         height: 509px;
         position: absolute;
         box-sizing: border-box;
         left: 25px;
         top: 140px;
-    }
-
-    .push1 {
-        position: absolute;
-        left: 0%;
-        right: 0%;
-        top: 0%;
-        bottom: 5.7%;
-        height: 480px;
-        width: 320px;
-        z-index: 3;
-        border-radius: 60px 12px 12px 12px;
-        cursor: pointer;
-    }
-
-    .push1.disabled1 {
-        position: absolute;
-        left: 0%;
-        right: 0%;
-        top: 0%;
-        bottom: 5.7%;
-        height: 480px;
-        width: 320px;
-        z-index: 3;
-        border-radius: 60px 12px 12px 12px;
-        cursor: pointer;
-        border-color: transparent;
-        mix-blend-mode: normal;
-        opacity: 0.5;
     }
 
     .background2 {
@@ -597,19 +643,6 @@ export default {
         top: 707px;
     }
 
-    .push2 {
-        position: absolute;
-        left: 0%;
-        right: 0%;
-        top: 0%;
-        bottom: 5.7%;
-        height: 480px;
-        width: 320px;
-        z-index: 3;
-        border-radius: 60px 12px 12px 12px;
-        cursor: pointer;
-    }
-
     .background3 {
         width: 320px;
         height: 509px;
@@ -618,27 +651,17 @@ export default {
         left: 25px;
         top: 1276px;
     }
-
-    .push3 {
-        position: absolute;
-        left: 0%;
-        right: 0%;
-        top: 0%;
-        bottom: 5.7%;
-        height: 480px;
-        width: 320px;
-        z-index: 3;
-        border-radius: 60px 12px 12px 12px;
-        cursor: pointer;
-    }
-
 }
+
+
+
 .wrapper {
     overflow: hidden;
     position: absolute;
-    left:0px;
+    box-sizing: border-box;
+    left: 0px;
     right: 0px;
-    top: 2px;
+    top: 0px;
     bottom: 0%;
     height: 480px;
     width: 320px;
@@ -654,20 +677,17 @@ export default {
     top: 48px;
     bottom: 5.7%;
     height: 432px;
-    width: 316px;
+    width: 318px;
+    
     background: #F2F2F2;
     border-radius: 0 0 12px 12px;
-    
     display: flex;
     align-items: flex-start;
-    backface-visibility: hidden;
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
 }
 
 .item:before {
     content: '';
+    box-sizing: border-box;
     height: 88px;
     width: 88px;
     border-radius: 0px;
@@ -677,25 +697,18 @@ export default {
     background: #F2F2F2;
     border-left: 4px solid #1698D9;
     transform: rotate(45deg);
-     backface-visibility: hidden;
+    backface-visibility: hidden;
 }
-
 
 .item:after {
     content: '';
-    height: 46px;
-    width: 273px;
-    border-radius: 0px;
+    height: 49px;
+    width: 274px;
     position: absolute;
     left: 43px;
     top: -48px;
-    background: #F2F2F2;
-    border-radius: 0 12px 0 0;
-    border-right: 4px solid #1698D9;
-    border-top: 4px solid #1698D9;
-   backface-visibility: hidden;
+    background: #F2F2F2;  
 }
-
 
 .photoCat {
     height: 360px;
@@ -706,36 +719,39 @@ export default {
     position: absolute;
     display: flex;
     align-items: flex-start;
-    backface-visibility: hidden;
     box-sizing: border-box;
+}
+
+.cat1 {
+    position: absolute;
+    left: 24px;
+    right: 0px;
+    top: -3px;
+    bottom: 0%;
+    overflow: hidden;
+    width: 318px;
 }
 
 .cat {
     position: absolute;
-    left: 24px;
+    left: 0px;
     right: 0px;
-    top: 0%;
+    top: 3px;
     bottom: 0%;
     min-width: 100%;
     min-height: 100%;
-    border-radius: 0px;
-    object-fit: cover;
-    backface-visibility: hidden;
+    border-radius: 0px;    
     outline: 3px solid #F2F2F2;
     outline-offset: -2px;
-
     box-sizing: border-box;
     background: url(../assets/PIC/Photo.png);
-
 }
 
 .border {
     box-sizing: border-box;
-    position: absolute;
-    left: 0%;
-    right: 0%;
+    position: absolute;    
     bottom: 0%;
-    height: 436px;
+    height: 437px;
     width: 320px;
     background: transparent;
     border-radius: 0 0 12px 12px;
@@ -743,6 +759,23 @@ export default {
     border-left: 4px solid #1698D9;
     border-bottom: 4px solid #1698D9;
     backface-visibility: hidden;
+    overflow: hidden;
+}
+
+.border1 {
+    box-sizing: border-box;
+    background: transparent;
+    height: 44px;
+    width: 278px;
+    position: absolute;
+    left: 42px;
+    top: 0px;
+    right: 0%;
+    bottom: 0%;
+    border-radius: 0 12px 0 0;
+    border-right: 4px solid #1698D9;
+    border-top: 4px solid #1698D9;  
+    overflow: hidden;
 }
 
 .oval {
@@ -757,67 +790,101 @@ export default {
 }
 
 /* Карточка при выборе*/
-.item.active::after {
+.border1.selectCart {
     border-right: 4px solid #D91667;
     border-top: 4px solid #D91667;
 }
 
-.item.active:before {
+.item.selectCart:before {
     border-left: 4px solid #D91667;
 }
 
-.border.active {
+.border.selectCart {
     border-right: 4px solid #D91667;
     border-left: 4px solid #D91667;
     border-bottom: 4px solid #D91667;
 }
 
-.oval.active {
+.oval.selectCart {
     background: #D91667;
 }
 
 /*Карточка при потери фокуса*/
-.item.active1:before {
+.item.unfocus:before {
     border-left: 4px solid #2EA8E6;
 }
 
-.border.active1 {
+.border.unfocus {
     border-right: 4px solid #2EA8E6;
     border-left: 4px solid #2EA8E6;
     border-bottom: 4px solid #2EA8E6;
 }
 
-.item.active1::after {
+.border1.unfocus {
     border-right: 4px solid #2EA8E6;
     border-top: 4px solid #2EA8E6;
 }
 
-.oval.active1 {
-    background: #2EA8E6;
+.line.unfocus div {
+    background: #2EA8E6
+}
+
+.oval.unfocus {
+    background: #2EA8E6
+}
+
+.textbuy1.act {
+    cursor: pointer;
+    color: #2EA8E6
+}
+
+.textbuy2.act {
+    cursor: pointer;
+    color: #2EA8E6
+}
+
+.textbuy3.act {
+    cursor: pointer;
+    color: #2EA8E6
 }
 
 /*Карточка при выборе и потери фокуса*/
-.border.active.active1 {
+.border.selectCart.unfocus {
     background: transparent;
     border-right: 4px solid #E52E7A;
     border-left: 4px solid #E52E7A;
     border-bottom: 4px solid #E52E7A;
 }
 
-.item.active.active1::after {
+.border1.selectCart.unfocus {
     border-right: 4px solid #E52E7A;
     border-top: 4px solid #E52E7A;
 }
 
-.item.active.active1:before {
+.item.selectCart.unfocus:before {
     border-left: 4px solid #E52E7A;
 }
 
-.oval.active.active1 {
+.oval.selectCart.unfocus {
     background: #E52E7A;
 }
 
 /* Текстовый блок*/
+.textbuy1 {
+    cursor: pointer;
+    color: #1698D9;
+}
+
+.textbuy2 {
+    cursor: pointer;
+    color: #1698D9;
+}
+
+.textbuy3 {
+    cursor: pointer;
+    color: #1698D9;
+}
+
 .text001head {
     position: absolute;
     height: 19px;
@@ -869,75 +936,7 @@ export default {
     color: #000000;
 }
 
-.text003taste2 {
-    position: absolute;
-    height: 28px;
-    left: 15.94%;
-    right: 54.69%;
-    top: calc(50% - 28px/2 - 140.5px);
-    z-index: 1;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-family: 'Trebuchet MS';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
-    color: #000000;
-}
-
-.text003taste3 {
-    position: absolute;
-    height: 28px;
-    left: 15.94%;
-    right: 56.56%;
-    top: calc(50% - 28px/2 - 140.5px);
-    z-index: 1;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-family: 'Trebuchet MS';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
-    color: #000000;
-}
-
 .text004sale {
-    position: absolute;
-    height: 32px;
-    left: 15.94%;
-    right: 50.94%;
-    top: calc(50% - 32px/2 - 95.5px);
-    z-index: 1;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-family: 'Trebuchet MS';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-    color: #666666;
-}
-
-.text004sale2 {
-    position: absolute;
-    height: 32px;
-    left: 15.94%;
-    right: 46.88%;
-    top: calc(50% - 32px/2 - 95.5px);
-    z-index: 1;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-family: 'Trebuchet MS';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-    color: #666666;
-}
-
-.text004sale3 {
     position: absolute;
     height: 48px;
     left: 15.94%;
@@ -957,39 +956,6 @@ export default {
 .text005footer {
     position: absolute;
     height: 15px;
-    left: 17.34%;
-    right: 17.34%;
-    top: calc(50% - 15px/2 + 247px);
-    z-index: 1;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-family: 'Trebuchet MS';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 15px;
-    text-align: center;
-    color: #FFFFFF;
-}
-
-.text005footer12 {
-    position: absolute;
-    height: 15px;
-    left: 13.75%;
-    right: 13.75%;
-    top: calc(50% - 15px/2 + 247px);
-    font-family: 'Trebuchet MS';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 15px;
-    text-align: center;
-    color: #FFFFFF;
-}
-
-.text005footer22 {
-    position: absolute;
-    height: 15px;
     left: 1.25%;
     right: 0.94%;
     top: calc(50% - 15px/2 + 247px);
@@ -1000,69 +966,6 @@ export default {
     line-height: 15px;
     text-align: center;
     color: #FFFFFF;
-}
-
-.text005footer32 {
-    position: absolute;
-    height: 15px;
-    left: 11.25%;
-    right: 10.94%;
-    top: calc(50% - 15px/2 + 247px);
-    font-family: 'Trebuchet MS';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 15px;
-    text-align: center;
-    color: #FFFFFF;
-}
-
-.text005footer13 {
-    position: absolute;
-    height: 15px;
-    left: 18.75%;
-    right: 18.44%;
-    top: calc(50% - 15px/2 + 247px);
-    font-family: 'Trebuchet MS';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 15px;
-    text-align: center;
-    color: #FFFF66;
-}
-
-.text005footer23 {
-    position: absolute;
-    height: 15px;
-    left: 20.31%;
-    right: 20%;
-    top: calc(50% - 15px/2 + 247px);
-    font-family: 'Trebuchet MS';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 15px;
-    text-align: center;
-    color: #FFFF66;
-}
-
-.text005footer33 {
-    position: absolute;
-    height: 15px;
-    left: 20.62%;
-    right: 20.62%;
-    top: calc(50% - 15px/2 + 247px);
-    font-family: 'Trebuchet MS';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 15px;
-    /* identical to box height */
-
-    text-align: center;
-
-    color: #FFFF66;
 }
 
 .text006weight {
@@ -1079,47 +982,7 @@ export default {
     font-weight: 400;
     font-size: 42px;
     line-height: 22px;
-    display: flex;
-    align-items: flex-end;
-    text-align: center;
-    color: #FFFFFF;
-}
-
-.text006weight2 {
-    position: absolute;
-    height: 22px;
-    left: 79.22%;
-    right: 13.59%;
-    top: calc(50% - 22px/2 + 160.5px);
-    z-index: 1;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-family: 'Trebuchet MS';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 42px;
-    line-height: 22px;
-    display: flex;
-    align-items: flex-end;
-    text-align: center;
-    color: #FFFFFF;
-}
-
-.text006weight3 {
-    position: absolute;
-    height: 22px;
-    left: 79.22%;
-    right: 13.59%;
-    top: calc(50% - 22px/2 + 160.5px);
-    z-index: 1;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-family: 'Trebuchet MS';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 42px;
-    line-height: 22px;
-    display: flex;
+    display: inline-block;
     align-items: flex-end;
     text-align: center;
     color: #FFFFFF;
@@ -1145,6 +1008,7 @@ export default {
 
 .textbuy {
     cursor: pointer;
+    color: #1698D9;
 }
 
 
@@ -1215,7 +1079,6 @@ export default {
     right: 26.88%;
     top: 99.8%;
     bottom: 0%;
-
     border-radius: 0px;
     position: absolute;
     background: #1698D9;
@@ -1251,22 +1114,22 @@ export default {
     opacity: 0.5;
 }
 
-.oval.active3 {
-    background: #B3B3B3;
+.oval.frozen{
+    background: #B3B3B3 !important;
 }
 
-.border.active3 {
-    border-right: 4px solid #B3B3B3;
-    border-left: 4px solid #B3B3B3;
-    border-bottom: 4px solid #B3B3B3;
+.border.frozen {
+    border-right: 4px solid #B3B3B3 !important;
+    border-left: 4px solid #B3B3B3 !important;
+    border-bottom: 4px solid #B3B3B3 !important;
 }
 
-.item.active3:after {
-    border-right: 4px solid #B3B3B3;
-    border-top: 4px solid #B3B3B3;
+.border1.frozen {
+    border-right: 4px solid #B3B3B3 !important;
+    border-top: 4px solid #B3B3B3 !important;
 }
 
-.item.active3:before {
-    border-left: 4px solid #B3B3B3;
+.item.frozen:before {
+    border-left: 4px solid #B3B3B3 !important;
 }
 </style>

@@ -5,7 +5,6 @@
 
 <script>
 import CatFood from './components/CatFood.vue'
-
 export default {
   name: 'App',
   components: {
@@ -15,6 +14,7 @@ export default {
 </script>
 
 <style>
+
 @font-face {
   font-family: "Exo2.0";
   src: local("Exo2.0"),
