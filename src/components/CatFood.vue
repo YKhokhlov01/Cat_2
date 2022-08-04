@@ -361,6 +361,10 @@ export default {
 
 <style>
 
+body{
+    min-width: 370px;
+}
+
 .cat-shop {
     box-sizing: border-box;
     border-color: transparent;
@@ -415,7 +419,7 @@ export default {
 }
 
 .desk {
-    min-width: 1300px;
+    min-width: 1280px;
     min-height: 680px;
     margin: 0 auto;
     box-sizing: border-box;
@@ -492,7 +496,7 @@ export default {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
 
     .pattern {
         height: 100vh;
@@ -550,7 +554,7 @@ export default {
         height: 509px;
         position: absolute;
         box-sizing: border-box;
-        left: 24px;
+        left: 14px;
         top: 104px;
     }
 
@@ -559,7 +563,7 @@ export default {
         height: 509px;
         position: absolute;
         box-sizing: border-box;
-        left: 424px;
+        left: 414px;
         top: 104px;
     }
 
@@ -568,11 +572,11 @@ export default {
         height: 509px;
         position: absolute;
         box-sizing: border-box;
-        left: 224px;
+        left: 214px;
         top: 673px;
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
     .pattern {
         height: 100%;
@@ -630,7 +634,7 @@ export default {
         height: 509px;
         position: absolute;
         box-sizing: border-box;
-        left: 25px;
+        left: 6%;
         top: 140px;
     }
 
@@ -639,7 +643,7 @@ export default {
         height: 509px;
         position: absolute;
         box-sizing: border-box;
-        left: 25px;
+        left: 6%;
         top: 707px;
     }
 
@@ -648,7 +652,7 @@ export default {
         height: 509px;
         position: absolute;
         box-sizing: border-box;
-        left: 25px;
+        left: 6%;
         top: 1276px;
     }
 }
