@@ -363,6 +363,8 @@ export default {
 
 body{
     min-width: 370px;
+    margin: 0;
+    padding: 0;
 }
 
 .cat-shop {
