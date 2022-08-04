@@ -608,7 +608,7 @@ body{
 
     .text-header {
         position: absolute;
-        width: 370px;
+        width: 350px;
         height: 43px;
         left: 0px;
         top: 16px;
@@ -634,7 +634,7 @@ body{
         height: 509px;
         position: absolute;
         box-sizing: border-box;
-        left: 6%;
+        left: 5.8%;
         top: 140px;
     }
 
@@ -643,7 +643,7 @@ body{
         height: 509px;
         position: absolute;
         box-sizing: border-box;
-        left: 6%;
+        left: 5.8%;
         top: 707px;
     }
 
@@ -652,7 +652,7 @@ body{
         height: 509px;
         position: absolute;
         box-sizing: border-box;
-        left: 6%;
+        left: 5.8%;
         top: 1276px;
     }
 }
