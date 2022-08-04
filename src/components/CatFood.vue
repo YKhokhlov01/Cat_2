@@ -362,7 +362,7 @@ export default {
 <style>
 
 body{
-    min-width: 370px;
+    min-width: 340px;
     margin: 0;
     padding: 0;
 }
@@ -556,7 +556,7 @@ body{
         height: 509px;
         position: absolute;
         box-sizing: border-box;
-        left: 14px;
+        left: 22px;
         top: 104px;
     }
 
@@ -574,11 +574,11 @@ body{
         height: 509px;
         position: absolute;
         box-sizing: border-box;
-        left: 214px;
+        left: 224px;
         top: 673px;
     }
 }
-@media (max-width: 800px) {
+@media (max-width: 768px) {
 
     .pattern {
         height: 100%;
@@ -623,7 +623,7 @@ body{
     }
 
     .desk {
-        min-width: 370px;
+        min-width: 340px;
         min-height: 1838px;
         margin: auto;
         box-sizing: border-box;
