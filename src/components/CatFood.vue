@@ -613,6 +613,7 @@ body{
         width: 350px;
         height: 43px;
         left: 0px;
+        right: 0px;
         top: 16px;
         font-family: 'Exo2.0';
         font-size: 36px;
@@ -636,7 +637,8 @@ body{
         height: 509px;
         position: absolute;
         box-sizing: border-box;
-        left: 5.8%;
+        left: 2%;
+        right: 2%;
         top: 140px;
     }
 
@@ -645,7 +647,8 @@ body{
         height: 509px;
         position: absolute;
         box-sizing: border-box;
-        left: 5.8%;
+        left: 2%;
+        right: 2%;
         top: 707px;
     }
 
@@ -654,7 +657,8 @@ body{
         height: 509px;
         position: absolute;
         box-sizing: border-box;
-        left: 5.8%;
+        left: 2%;
+        right: 2%;
         top: 1276px;
     }
 }
@@ -895,7 +899,7 @@ body{
     position: absolute;
     height: 19px;
     left: 15.94%;
-    right: 20%;
+    right: 2%;
     top: calc(50% - 19px/2 - 224px);
     z-index: 1;
     margin-top: 0;
@@ -929,7 +933,7 @@ body{
     position: absolute;
     height: 28px;
     left: 15.94%;
-    right: 49.06%;
+    right: 10%;
     top: calc(50% - 28px/2 - 140.5px);
     z-index: 1;
     margin-top: 0;
