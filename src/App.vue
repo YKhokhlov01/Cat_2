@@ -5,6 +5,7 @@
 
 <script>
 import CatFood from './components/CatFood.vue'
+
 export default {
   name: 'App',
   components: {
