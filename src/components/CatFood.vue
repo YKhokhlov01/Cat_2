@@ -82,8 +82,42 @@ body {
   min-width: 360px;
   margin: 0;
   padding: 0;
+  position: relative;
 }
+ body::before {
+   background: url(../assets/PIC/Pattern.png) no-repeat center center;
+    background-size: cover;
+    content: ' ';
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    will-change: transform;
+    z-index: -1;
+    flex-grow: 0;
+    flex-shrink: 0;
+ }
 
+ body::after {
+   background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 5e-5) 49.88%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+    background-size: cover;
+    content: ' ';
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    will-change: transform;
+    z-index: -1;
+    flex-grow: 0;
+    flex-shrink: 0;
+ }
 .cat-shop {
  
   box-sizing: border-box;
@@ -98,37 +132,6 @@ body {
   align-content: center;
   justify-content: center;
   overflow: auto;
-}
-
-.pattern {
-  position: fixed;
-  display: flex;
-  min-width: 360px;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  flex-grow: 0;
-  flex-shrink: 0;
-  box-sizing: border-box;
-  background: url(../assets/PIC/Pattern.png);
-  overflow: auto;
-  
-}
-
-.shadow {
-  position: fixed;
-  min-width: 360px;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  flex-grow: 0;
-  flex-shrink: 0; 
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 5e-5) 49.88%,
-    rgba(0, 0, 0, 0.5) 100%
-  );
 }
 
 .header {
