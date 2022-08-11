@@ -1,8 +1,5 @@
 <template>
-  <div class="cat-shop">
-    <div class="pattern">
-      <div class="shadow"></div>
-    </div>
+  <div class="cat-shop">  
     <div class="desk">
       <!-- Header-->
       <div class="header">

@@ -148,7 +148,7 @@ export default {
   position: relative;
   box-sizing: border-box;
   margin-top:  24px;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
   
 }
 
