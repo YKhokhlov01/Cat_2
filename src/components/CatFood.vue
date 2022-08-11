@@ -85,7 +85,7 @@ body {
 }
 
 .cat-shop {
-  position: fixed;
+ 
   box-sizing: border-box;
   border-color: transparent;
   margin: 0px auto;
@@ -112,7 +112,7 @@ body {
   box-sizing: border-box;
   background: url(../assets/PIC/Pattern.png);
   overflow: auto;
-  background-attachment: fixed;
+  
 }
 
 .shadow {
@@ -122,8 +122,7 @@ body {
   height: 100vh;
   object-fit: cover;
   flex-grow: 0;
-  flex-shrink: 0;
-  background-attachment: fixed;
+  flex-shrink: 0; 
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.5) 0%,
