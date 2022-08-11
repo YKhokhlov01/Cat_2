@@ -28,7 +28,6 @@ import cart from "./cart.vue";
 export default {
   components: { cart },
   name: "CatFood",
-
   props: {},
   data() {
     return {
